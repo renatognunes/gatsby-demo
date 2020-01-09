@@ -5,6 +5,20 @@
  */
 
 module.exports = {
-  plugins: ["gatsby-plugin-sass"],
   /* Your site config here */
+  siteMetaData: {
+    title: "Blog Demo",
+    author: "Renato G. Nunes",
+  },
+  plugins: [
+    "gatsby-plugin-sass",
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "src",
+        path: `${__dirname}/src/`,
+      },
+    },
+    "gatsby-transformer-remark",
+  ],
 }

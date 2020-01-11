@@ -14,12 +14,14 @@ require("dotenv").config({
 })
 
 module.exports = {
-  /* Your site config here */
-  siteMetaData: {
-    title: "Blog Demo",
-    author: "Renato G. Nunes",
-  },
   plugins: [
+    {
+      resolve: "gatsby-source-contentful",
+      options: {
+        spaceId: process.env.CONTENTFUL_SPACE_ID,
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+      },
+    },
     "gatsby-plugin-sass",
     {
       resolve: "gatsby-source-filesystem",
@@ -28,6 +30,21 @@ module.exports = {
         path: `${__dirname}/src/`,
       },
     },
-    "gatsby-transformer-remark",
+    "gatsby-plugin-sharp",
+    {
+      resolve: "gatsby-transformer-remark",
+      options: {
+        plugins: [
+          "gatsby-remark-relative-images",
+          {
+            resolve: "gatsby-remark-images",
+            options: {
+              maxWidth: 750,
+              linkImagesToOriginal: false,
+            },
+          },
+        ],
+      },
+    },
   ],
 }

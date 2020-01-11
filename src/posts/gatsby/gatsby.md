@@ -5,6 +5,8 @@ date: "2020-01-08"
 
 I just launched a new blog!
 
+![Computer Code](./pic.jpeg)
+
 ## Topics Covered
 
 1. Gatsby
